@@ -15,10 +15,10 @@ export class ModuloUsuarioElementos{
     static get inputs_Screen_Create_Users(){
         return {
             get input_Name(){
-                return cy.get('input[id="FirstName"]');
+                return cy.get('input[id="FirstName"]', { timeout: 9000 });
             },
             get input_LastName(){
-                return cy.get('input[id="LastName"]');
+                return cy.get('input[id="LastName"]',{ timeout: 9000 });
             },
             get input_Email(){
                 return cy.get('input[id="Email"]');
@@ -33,6 +33,28 @@ export class ModuloUsuarioElementos{
                 return cy.get('input[id="RoleId"]');
             },
 
+        }
+    }
+    static get mensajes_Error(){
+        return{
+            get inputError_Name(){
+                return cy.get('span[id="FirstName-error"]');
+            },
+            get inputError_LastName(){
+                return cy.get('span[id="LastName-error"]');
+            },
+            get inputError_Email(){
+                return cy.get('span[id="Email-error"]');
+            },
+            get inputError_password(){
+                return cy.get('span[id="password-error"]');
+            },
+            get inputError_ConfirmdPassword(){
+                return cy.get('span[id="ConfirmPassword"]');
+            },
+            get inputError_Role(){
+                return cy.get('span[id="RoleId-error"]');
+            }
         }
     }
 }

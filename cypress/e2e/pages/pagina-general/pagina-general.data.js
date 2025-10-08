@@ -21,4 +21,12 @@ export class PaginaGeneralData{
             datosConEspaciosalPrincipio: '   usuario   '
         }
     }
+
+    static get datos_permitidos_texto(){
+        return {
+            textoconcaracteres: 'Ángel Muñiz _ SUsanñ{_+_+',
+            textoconsimbolos: 'hol@mundo 125*',
+            textoConSimGato: '# 297'
+        }
+    }
 }

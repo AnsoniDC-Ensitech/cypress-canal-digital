@@ -20,4 +20,5 @@ export class PaginaGeneralMetodos{
     static click_On_Link_Roles(){
         PaginaGeneralElementos.menu_Home.menu_Roles.click({force:true});
     }
+
 }

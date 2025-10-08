@@ -72,5 +72,28 @@ export class ModuloUsuarioMetodos{
         this.verify_that_only_spaces_can_be_entered_Lastname(test1);
         this.verify_that_extra_spaces_are_removed_Lastname(test2);
     }
+    
+    static verify_permitted_values_Name(dato){
+        ModuloUsuarioElementos.inputs_Screen_Create_Users.input_Name
+        .should('be.visible') 
+        .clear()
+        .type(dato)
+        .invoke('val')
+        .should('eq', dato)
+         // Verifica que NO se muestre ningún mensaje de error
+         ModuloUsuarioElementos.mensajes_Error.inputError_Name
+        .should('not.exist') // no debe existir en el DOM
+    }
 
+     static verify_permitted_values_LastName(dato){
+        ModuloUsuarioElementos.inputs_Screen_Create_Users.input_LastName
+        .should('be.visible') 
+        .clear()
+        .type(dato)
+        .invoke('val')
+        .should('eq', dato)
+         // Verifica que NO se muestre ningún mensaje de error
+         ModuloUsuarioElementos.mensajes_Error.inputError_LastName
+        .should('not.exist') // no debe existir en el DOM
+    }
 }
