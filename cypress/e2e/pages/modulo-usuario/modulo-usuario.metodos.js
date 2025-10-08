@@ -33,4 +33,44 @@ export class ModuloUsuarioMetodos{
       .should('have.length', 100);
     }
 
+    static verify_that_only_spaces_can_be_entered_name(textovacio){
+        ModuloUsuarioElementos.inputs_Screen_Create_Users.input_Name
+        .type(textovacio)        // intenta ingresar solo espacios
+        .invoke('val')
+        .should('eq', '')    // debe quedarse vacío
+    }
+
+    static verify_that_extra_spaces_are_removed_name(textovacio){
+        ModuloUsuarioElementos.inputs_Screen_Create_Users.input_Name
+        .clear()
+        .type(textovacio)
+        .invoke('val')
+        .should('eq', 'usuario')  // espacios al inicio/final eliminados
+    }
+
+    static verify_empty_spaces_Name(test1, test2){
+        this.verify_that_only_spaces_can_be_entered_name(test1);
+        this.verify_that_extra_spaces_are_removed_name(test2);
+    }
+
+    static verify_that_only_spaces_can_be_entered_Lastname(textovacio){
+        ModuloUsuarioElementos.inputs_Screen_Create_Users.input_LastName
+        .type(textovacio)        // intenta ingresar solo espacios
+        .invoke('val')
+        .should('eq', '')    // debe quedarse vacío
+    }
+
+    static verify_that_extra_spaces_are_removed_Lastname(textovacio){
+        ModuloUsuarioElementos.inputs_Screen_Create_Users.input_LastName
+        .clear()
+        .type(textovacio)
+        .invoke('val')
+        .should('eq', 'usuario')  // espacios al inicio/final eliminados
+    }
+
+     static verify_empty_spaces_Lastname(test1, test2){
+        this.verify_that_only_spaces_can_be_entered_Lastname(test1);
+        this.verify_that_extra_spaces_are_removed_Lastname(test2);
+    }
+
 }
