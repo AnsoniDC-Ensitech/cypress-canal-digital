@@ -9,4 +9,9 @@ export class PaginaGeneralData{
             Roles: "Módulo de Roles"
         };
     }
+    static get valores_mayores_a_100_caracteres(){
+        return{
+            textoLargo: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec qu'
+        }
+    }
 }

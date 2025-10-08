@@ -9,6 +9,7 @@ import { PaginaGeneralMetodos } from "../pages/pagina-general/pagina-general.met
 const user =  LogInData.valid_Acceses.username;
 const password = LogInData.valid_Acceses.password;
 const textLong = 'A'.repeat(120);
+const textLargo = PaginaGeneralData.valores_mayores_a_100_caracteres.textoLargo;
 
 describe(PaginaGeneralData.testSuites.usuario, () => {
   it('Verificación de la longitud de campos de tipo texto', () => {
@@ -20,7 +21,7 @@ describe(PaginaGeneralData.testSuites.usuario, () => {
     ModuloUsuarioMetodos.verify_Maxlength_Attribute_Name();
     ModuloUsuarioMetodos.verify_Maxlength_Attribute_LastName();
     ModuloUsuarioMetodos.verify_maximum_length_Input_Name(textLong);
-    ModuloUsuarioMetodos.verify_maximum_length_Input_LastName(textLong);
+    ModuloUsuarioMetodos.verify_maximum_length_Input_LastName(textLargo);
     cy.wait(3000);
   })
 })
