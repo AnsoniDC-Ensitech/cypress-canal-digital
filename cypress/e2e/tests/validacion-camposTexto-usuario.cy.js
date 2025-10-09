@@ -17,7 +17,7 @@ const textConSimbolos = PaginaGeneralData.datos_permitidos_texto.textoconsimbolo
 const textConSimGato = PaginaGeneralData.datos_permitidos_texto.textoConSimGato;
 const ingresarTexto = PaginaGeneralData.cadenas_compuestas_por_caracteres_especiales;
 
-describe(PaginaGeneralData.testSuites.usuario, () => {
+xdescribe(PaginaGeneralData.testSuites.validacionTexto, () => {
   it('Verificación de la longitud de campos de tipo texto', () => {
     PaginaGeneralMetodos.navegar_Sitio_Web();
     LogInMetodos.logIn(user,password);

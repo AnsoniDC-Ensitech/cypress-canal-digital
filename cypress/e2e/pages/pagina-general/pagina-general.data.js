@@ -4,9 +4,9 @@ export class PaginaGeneralData{
     };
     static get testSuites(){
         return{
-            usuario: "Módulo de Usuarios",
-            permisos: "Modulo de Permisos",
-            Roles: "Módulo de Roles"
+            validacionTexto: 'Validacion-camposTexto-usuario',
+            validacionPassword: 'Validacion-camposPassword-usuarios',
+            Roles: 'Módulo de Roles'
         };
     }
     static get valores_mayores_a_100_caracteres(){

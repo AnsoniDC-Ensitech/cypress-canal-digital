@@ -57,4 +57,15 @@ export class ModuloUsuarioElementos{
             }
         }
     }
+    static get mensajes_Error_Password(){
+        return{
+           
+             get mensaje_error_Password(){
+                return cy.get('span[class="text-danger field-validation-error"][data-valmsg-for="Password"]')
+            },
+             get mensaje_error_ConfirmdPassword(){
+                return cy.get('span[class="text-danger field-validation-error"][data-valmsg-for="ConfirmPassword"]');
+            }
+        }
+    }
 }

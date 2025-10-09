@@ -118,4 +118,10 @@ export class ModuloUsuarioMetodos{
          ModuloUsuarioElementos.mensajes_Error.inputError_LastName
         .should('exist') // debe existir en el DOM
     }
+
+    //verificar que el campo es de tipo contraseña
+    static verify_input_type_password(){
+        ModuloUsuarioElementos.inputs_Screen_Create_Users.input_Password.should('have.attr', 'type', 'password');
+        ModuloUsuarioElementos.inputs_Screen_Create_Users.input_ConfirmdPassword.should('have.attr', 'type', 'password');
+    }
 }
