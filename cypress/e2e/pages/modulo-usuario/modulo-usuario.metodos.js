@@ -96,4 +96,26 @@ export class ModuloUsuarioMetodos{
          ModuloUsuarioElementos.mensajes_Error.inputError_LastName
         .should('not.exist') // no debe existir en el DOM
     }
+
+    static verify_that_strings_consisting_solely_special_characters_are_not_allowed_Name(dato){
+        ModuloUsuarioElementos.inputs_Screen_Create_Users.input_Name 
+        .clear()
+        .type(dato)
+        .invoke('val')
+        .should('eq', dato)
+         // Verifica que se muestre ningún mensaje de error
+         ModuloUsuarioElementos.mensajes_Error.inputError_Name
+        .should('exist') // Si debe existir en el DOM
+    }
+
+    static verify_that_strings_consisting_solely_special_characters_are_not_allowed_LastName(dato){
+        ModuloUsuarioElementos.inputs_Screen_Create_Users.input_LastName 
+        .clear()
+        .type(dato)
+        .invoke('val')
+        .should('eq', dato)
+         // Verifica que se muestre ningún mensaje de error
+         ModuloUsuarioElementos.mensajes_Error.inputError_LastName
+        .should('exist') // debe existir en el DOM
+    }
 }

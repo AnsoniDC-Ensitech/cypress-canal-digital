@@ -29,4 +29,17 @@ export class PaginaGeneralData{
             textoConSimGato: '# 297'
         }
     }
+    static get cadenas_compuestas_por_caracteres_especiales(){
+        return {
+            signoGato: '#################',
+            comillaDobles: '""""""""""""""""""""""""""""""',
+            compuestoConSimbolos:'""""####$$%%%%%',
+            signoExclamacion:'!!!!""""""///%%',
+            signoMoneda: '#$#$#$#$#$#$#$#$#$',
+            astericos:'**************',
+            corchete:']]]]]]]]]]]]]',
+            comillasSimples:'¨¨¨¨¨¨¨¨¨¨¨¨¨¨'
+
+        }
+    }
 }
