@@ -68,7 +68,7 @@ export class ModuleUserElements{
             }
         }
     }
-        //métofo generico para seleccionar el input del form
+        //método genérico para seleccionar el input del form
     static get inputFormUser(){
             return{
                 inputName(input){
@@ -76,4 +76,16 @@ export class ModuleUserElements{
                 }
             }
     }
+    //método genérico para seleccionar los botones
+    static get screenButton(){
+        return {
+            button(nameButton){
+                return cy.get(nameButton);
+            },
+            buttonCancelled(nameButton){
+                return cy.contains(nameButton);
+            }
+        }
+    }
+
 }

@@ -9,4 +9,12 @@ export class ModuleUsersData{
             inputRole: 'input[id="RoleId"]'
         };
     }
+
+    static get screenButtonsUsers(){
+        return{
+            addButton: 'a[class="btn btn-primary"][type="button"]',
+            saveButton:'button[class="btn btn-primary"][type="submit"]',
+            cancelledButton:"'a.btn.btn-default', 'Cancelar'"
+        }
+    }
 }
