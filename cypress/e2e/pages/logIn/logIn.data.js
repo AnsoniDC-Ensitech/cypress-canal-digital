@@ -1,5 +1,5 @@
 export class LogInData{
-    static get valid_Acceses(){
+    static get validAcceses(){
         return {
             username: "ansoni@ensitech.com",
             password: "Ensitech2025$"

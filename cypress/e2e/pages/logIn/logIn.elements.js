@@ -1,5 +1,5 @@
-export class LogInElementos{
-    static get inputs_Display_LogIn(){
+export class LogInElements{
+    static get inputsDisplayLogIn(){
         return{
             get username(){
                 return cy.get('input[id="Email"]');
@@ -10,9 +10,9 @@ export class LogInElementos{
         }
     }
 
-    static get login_Screen_Buttons(){
+    static get loginScreenButtons(){
         return{
-            get login_Button(){
+            get loginButton(){
                 return cy.get('button[type="submit"]').contains('Iniciar Sesión')
             }
         }

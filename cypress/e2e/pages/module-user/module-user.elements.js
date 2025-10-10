@@ -1,71 +1,79 @@
-export class ModuloUsuarioElementos{
-    static get screen_Buttons_Users(){
+export class ModuleUserElements{
+    static get screenButtonsUsers(){
         return{
-            get add_button(){
+            get addButton(){
                 return cy.get('a[class="btn btn-primary"][type="button"]');
             },
-            get save_button(){
+            get saveButton(){
                 return cy.get('button[class="btn btn-primary"][type="submit"]');
             },
-            get cancelled_button(){
+            get cancelledButton(){
                 return cy.contains('a.btn.btn-default', 'Cancelar');
             }
         }
     }
-    static get inputs_Screen_Create_Users(){
+    static get inputsScreenCreateUsers(){
         return {
-            get input_Name(){
-                return cy.get('input[id="FirstName"]', { timeout: 9000 });
+            get inputName(){
+                return cy.get('input[id="FirstName"]', { timeout: 3000 });
             },
-            get input_LastName(){
-                return cy.get('input[id="LastName"]',{ timeout: 9000 });
+            get inputLastname(){
+                return cy.get('input[id="LastName"]',{ timeout: 3000 });
             },
-            get input_Email(){
+            get inputEmail(){
                 return cy.get('input[id="Email"]');
             },
-            get input_Password(){
+            get inputPassword(){
                 return cy.get('input[id="password"]');
             },
-            get input_ConfirmdPassword(){
+            get inputConfirmdPassword(){
                 return cy.get('input[name="ConfirmPassword"]');
             },
-            get input_Role(){
+            get inputRole(){
                 return cy.get('input[id="RoleId"]');
             },
 
         }
     }
-    static get mensajes_Error(){
+    static get mensajesError(){
         return{
-            get inputError_Name(){
+            get inputErrorName(){
                 return cy.get('span[id="FirstName-error"]');
             },
-            get inputError_LastName(){
+            get inputErrorLastname(){
                 return cy.get('span[id="LastName-error"]');
             },
-            get inputError_Email(){
+            get inputErrorEmail(){
                 return cy.get('span[id="Email-error"]');
             },
-            get inputError_password(){
+            get inputErrorPassword(){
                 return cy.get('span[id="password-error"]');
             },
-            get inputError_ConfirmdPassword(){
+            get inputErrorConfirmdPassword(){
                 return cy.get('span[id="ConfirmPassword"]');
             },
-            get inputError_Role(){
+            get inputErrorRole(){
                 return cy.get('span[id="RoleId-error"]');
             }
         }
     }
-    static get mensajes_Error_Password(){
+    static get mensajesErrorPassword(){
         return{
            
-             get mensaje_error_Password(){
+             get mensajeErrorPassword(){
                 return cy.get('span[class="text-danger field-validation-error"][data-valmsg-for="Password"]')
             },
-             get mensaje_error_ConfirmdPassword(){
+             get mensajeErrorConfirmdPassword(){
                 return cy.get('span[class="text-danger field-validation-error"][data-valmsg-for="ConfirmPassword"]');
             }
         }
+    }
+        //métofo generico para seleccionar el input del form
+    static get inputFormUser(){
+            return{
+                inputName(input){
+                    return cy.get(input, { timeout: 3000 });
+                }
+            }
     }
 }

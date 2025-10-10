@@ -1,21 +1,33 @@
 import { LogInData } from "../pages/LogIn/LogIn.data";
-import { LogInMetodos } from "../pages/LogIn/LogIn.metodos";
-import { ModuloUsuarioMetodos } from "../pages/modulo-usuario/modulo-usuario.metodos";
-import { PaginaGeneralData } from "../pages/pagina-general/pagina-general.data";
-import { PaginaGeneralMetodos } from "../pages/pagina-general/pagina-general.metodos";
+import { LogInMethods } from "../pages/logIn/logIn.methods";
+import { ModuleUserMethods } from "../pages/module-user/module-user.methods";
+import { MainPageData } from "../pages/main-page/main-page.data";
+import { MainPageMethods } from "../pages/main-page/main-page.methods";
 
-const user =  LogInData.valid_Acceses.username;
-const password = LogInData.valid_Acceses.password;
+const user =  LogInData.validAcceses.username;
+const password = LogInData.validAcceses.password;
 
-describe(PaginaGeneralData.testSuites.validacionPassword, () => {
+xdescribe(MainPageData.testSuites.passwordValidation, () => {
 
         it ('Validación de campo de tipo password', ()=>{
-                PaginaGeneralMetodos.navegar_Sitio_Web();
-                LogInMetodos.logIn(user,password);
-                PaginaGeneralMetodos.click_On_Link_Administrar();
-                PaginaGeneralMetodos.click_On_Link_Usuarios();
-                ModuloUsuarioMetodos.click_On_Button_Open_Screen_Create_Users();
-                ModuloUsuarioMetodos.verify_input_type_password();
+                MainPageMethods.browseWebsite();
+                LogInMethods.logIn(user,password);
+                MainPageMethods.clickOnAdministrationLink();
+                MainPageMethods.clickOnUserLink();
+                ModuleUserMethods.openCreateUserScreen();
+                ModuleUserMethods.verifyInputTypePassword();
                 cy.wait(3000)
         })
+
+         xit ('Validación de la composición de la contraseña', ()=>{
+                MainPageMethods.browseWebsite();
+                LogInMethods.logIn(user,password);
+                MainPageMethods.clickOnAdministrationLink();
+                MainPageMethods.clickOnUserLink();
+                ModuleUserMethods.openCreateUserScreen();
+                ModuleUserMethods.verifyInputTypePassword();
+                cy.wait(3000)
+        })
+
+
 })

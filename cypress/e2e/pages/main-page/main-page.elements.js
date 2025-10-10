@@ -1,16 +1,16 @@
-export class PaginaGeneralElementos{
-      static get menu_Home(){
+export class MainPageElements{
+      static get menuHome(){
         return{
-            get collapse_Administracion(){
+            get administrationCollapse(){
                 return cy.get ('span[data-lang="Administración"]');
             },
-            get menu_Usuarios(){
+            get userMenu(){
                 return cy.get('span[data-lang="Usuarios" ]');
             },
-             get menu_Roles(){
+             get rolesMenu(){
                 return cy.get('span[data-lang="Roles" ]');
             },
-             get menu_Permisos(){
+             get permissionMenu(){
                 return cy.get('span[data-lang="Permisos" ]');
             }
         }
