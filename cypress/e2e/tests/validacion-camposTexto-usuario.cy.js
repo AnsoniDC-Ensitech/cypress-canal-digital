@@ -28,9 +28,9 @@ describe(MainPageData.testSuites.textValidation, () => {
     ModuleUserMethods.openCreateUserScreen();
     ModuleUserMethods.verifyMaxlengthAttributeName();
     ModuleUserMethods.verifyMaxlengthAttributeLastName();
-    ModuleUserMethods.verifyMaximumLengthInput(selector.inputName,longText1);
+    ModuleUserMethods.verifyMaximumLengthInput(selector.inptName,longText1);
     //ModuleUserMethods.verifyMaximumLengthInputName(longText1);
-    ModuleUserMethods.verifyMaximumLengthInput(selector.inputLastname,longText2);
+    ModuleUserMethods.verifyMaximumLengthInput(selector.inptLastname,longText2);
     cy.wait(3000);
   })
 

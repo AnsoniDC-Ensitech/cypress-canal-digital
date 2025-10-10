@@ -104,7 +104,7 @@ export class ModuleUserMethods{
         .invoke('val')
         .should('eq', values)
          // Verifica que se muestre ningún mensaje de error
-         ModuleUserElements.mensajesError.inputErrorName
+         ModuleUserElements.errorMessages.inputErrorName
         .should('exist') // Si debe existir en el DOM
     }
 
@@ -115,7 +115,7 @@ export class ModuleUserMethods{
         .invoke('val')
         .should('eq', values)
          // Verifica que se muestre ningún mensaje de error
-         ModuleUserElements.mensajesError.inputErrorLastname
+         ModuleUserElements.errorMessages.inputErrorLastname
         .should('exist') // debe existir en el DOM
     }
 
@@ -133,7 +133,7 @@ export class ModuleUserMethods{
         .invoke('val')
         .should('eq', password)
          // Verifica que se muestre ningún mensaje de error
-         ModuleUserElements.mensajesErrorPassword.mensajeErrorPassword
+         ModuleUserElements.messagesErrorPassword.mErrorPassword
          .should('exist')
     }
 
@@ -144,15 +144,94 @@ export class ModuleUserMethods{
         .invoke('val')
         .should('eq', ConfirmPassword)
          // Verifica que se muestre ningún mensaje de error
-         ModuleUserElements.mensajesErrorPassword.mensajeErrorConfirmdPassword
+         ModuleUserElements.messagesErrorPassword.mErrorConfirmdPassword
          .should('exist')
     }
 
     // metodo generico para verificar longitud maxima
     static verifyMaximumLengthInput(input,longText, maxLength = 100){
-        ModuleUserElements.inputFormUser.inputName(input)
+        ModuleUserElements.selectorInputs.selectorName(input)
       .type(longText)
       .invoke('val')
       .should('have.length', maxLength);
     }
+
+    //Metodo generico para la acción de dar clic algún botón
+     static clickOnButtonBySelector(selector){
+        ModuleUserElements.screenButton.button(selector)
+        .should('be.visible')
+        .click({force:true});
+    }
+     // Método genérico para dar click a un botón por selector + texto
+    static clickOnButtonByText(buttonData) {
+        ModuleUserElements.screenButton.buttonByText(buttonData)
+            .should('be.visible')
+            .click({ force: true });
+    }
+    //Método genérico para verificar el atributo Maxlegnth
+    static verifyMaxlengthAttributeInputs(selector){
+        ModuleUserElements.selectorInputs.selectorName(selector)
+        .should('have.attr', 'maxlength', '100');
+    }
+
+    //Método Genérico para verificar que no acepta espacios en blanco
+    static verifyThatOnlySpacesCanBeeEnteredName(selector, emptyText){
+        ModuleUserElements.selectorInputs.selectorName(selector)
+        .type(emptyText)        // intenta ingresar solo espacios
+        .invoke('val')
+        .should('eq', '')    // debe quedarse vacío
+    }
+
+    //Método Genérico para verificar que no contenga espacios al inicio y final
+    static verifyThatExtraSpacesAreRemovedName(selector, emptyText){
+        ModuleUserElements.selectorInputs.selectorName(selector)
+        .clear()
+        .type(emptyText)
+        .invoke('val')
+        .should('eq', emptyText.trim())  // espacios al inicio/final eliminados
+    }
+
+    //Método Genérico para verificar los valores permitodos de tipo texto
+     static verifyPermittedValues(selector, values, messageError){
+        ModuleUserElements.selectorInputs.selectorName(selector)
+        .should('be.visible') 
+        .clear()
+        .type(values)
+        .invoke('val')
+        .should('eq', values)
+         // Verifica que NO se muestre ningún mensaje de error
+         ModuleUserElements.inputsErrors.inputError(messageError)
+        .should('not.exist') // no debe existir en el DOM
+    }
+    //Método Genérico para verificar carcateres inválidos
+    static verifyInvalidSpecialChar(selector, values, messageError){
+        ModuleUserElements.selectorInputs.selectorName(selector) 
+        .clear()
+        .type(values)
+        .invoke('val')
+        .should('eq', values)
+         // Verifica que se muestre ningún mensaje de error
+         ModuleUserElements.inputsErrors.inputError(messageError)
+        .should('exist') // Si debe existir en el DOM
+    }
+
+        //Método Genérico para verificar tipo de campo Password
+        static verifyInputTypePassword(selector){
+            ModuleUserElements.selectorInputs.selectorName(selector)
+            .should('have.attr', 'type', 'password');
+        }
+
+        //Método Genérico verificacion de composición de la contraseña
+        static verifyPasswordComposition(selector, password,validationError){
+        ModuleUserElements.inputsScreenCreateUsers.inputPassword
+        .clear()
+        .type(password)
+        .invoke('val')
+        .should('eq', password)
+         // Verifica que se muestre ningún mensaje de error
+         ModuleUserElements.messagesErrorPassword.mErrorPassword
+         .should('exist')
+    }
+
+
 }

@@ -35,7 +35,7 @@ export class ModuleUserElements{
 
         }
     }
-    static get mensajesError(){
+    static get errorMessages(){
         return{
             get inputErrorName(){
                 return cy.get('span[id="FirstName-error"]');
@@ -57,35 +57,55 @@ export class ModuleUserElements{
             }
         }
     }
-    static get mensajesErrorPassword(){
+    static get messagesErrorPassword(){
         return{
            
-             get mensajeErrorPassword(){
+             get mErrorPassword(){
                 return cy.get('span[class="text-danger field-validation-error"][data-valmsg-for="Password"]')
             },
-             get mensajeErrorConfirmdPassword(){
+             get mErrorConfirmdPassword(){
                 return cy.get('span[class="text-danger field-validation-error"][data-valmsg-for="ConfirmPassword"]');
             }
         }
     }
-        //método genérico para seleccionar el input del form
-    static get inputFormUser(){
+        //método genérico para obtener el selector del input del form
+    static get selectorInputs(){
             return{
-                inputName(input){
+                selectorName(input){
                     return cy.get(input, { timeout: 3000 });
                 }
             }
     }
-    //método genérico para seleccionar los botones
-    static get screenButton(){
-        return {
-            button(nameButton){
-                return cy.get(nameButton);
-            },
-            buttonCancelled(nameButton){
-                return cy.contains(nameButton);
-            }
+    // Método genérico para seleccionar botones
+    static screenButton = {
+        
+        // Para botones por selector CSS
+        button(selector) {
+            return cy.get(selector);
+        },
+
+        // Para botones por selector + texto (cy.contains)
+        buttonByText(buttonData) {
+            return cy.contains(buttonData.selector, buttonData.text);
         }
     }
+
+     //método genérico de selector de mensajes de error
+        static get inputsErrors(){
+            return {
+                inputError(error){
+                    return cy.get(error);
+                }
+            }
+        }
+
+        //Método genérico de selector de mensaje de validaciones de inputs Password
+        static get passwordErrorMessages(){
+            return {
+                inputErrorPassword(inptPassword){
+                    return cy.get(inptPassword);
+                }
+            }
+        }
 
 }
