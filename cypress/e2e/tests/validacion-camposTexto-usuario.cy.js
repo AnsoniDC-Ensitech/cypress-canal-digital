@@ -18,18 +18,23 @@ const symbolText = MainPageData.PermittedDataText.textWithCharacters;
 const hashtagText = MainPageData.PermittedDataText.textWithSimCat;
 const text = MainPageData.stringsComposedOfSpecialCharacters;
 const selector = ModuleUsersData.selectorsName;
+const button = ModuleUsersData.screenButtonsUsers;
+const errorInputs = ModuleUsersData.errorMessagesInputs;
+const errorPasword = ModuleUsersData.messagesErrorPassword;
+const selectMenu = MainPageData.menuOptions;
+const selLogIn = LogInData.selectorLogIn;
+const selBtn = LogInData.selectorBtnLogIn;
 
 describe(MainPageData.testSuites.textValidation, () => {
   it('Verificación de la longitud de campos de tipo texto', () => {
     MainPageMethods.browseWebsite();
-    LogInMethods.logIn(user,password);
-    MainPageMethods.clickOnAdministrationLink();
-    MainPageMethods.clickOnUserLink();
-    ModuleUserMethods.openCreateUserScreen();
-    ModuleUserMethods.verifyMaxlengthAttributeName();
-    ModuleUserMethods.verifyMaxlengthAttributeLastName();
+    LogInMethods.logIns(user,password,selBtn.loginButton)
+    MainPageMethods.clickOnMenuOpstions(selectMenu.administrationCollapse);
+    MainPageMethods.clickOnMenuOpstions(selectMenu.userMenu);
+    ModuleUserMethods.clickOnButtonBySelector(button.addButton);
+    ModuleUserMethods.verifyMaxlengthAttributeInputs(selector.inptName);
+    ModuleUserMethods.verifyMaxlengthAttributeInputs(selector.inptLastname);
     ModuleUserMethods.verifyMaximumLengthInput(selector.inptName,longText1);
-    //ModuleUserMethods.verifyMaximumLengthInputName(longText1);
     ModuleUserMethods.verifyMaximumLengthInput(selector.inptLastname,longText2);
     cy.wait(3000);
   })

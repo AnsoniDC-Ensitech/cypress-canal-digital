@@ -1,4 +1,6 @@
 
+import { ModuleUserMethods } from "../module-user/module-user.methods";
+import { LogInData } from "./LogIn.data";
 import { LogInElements } from "./logIn.elements";
 
 export class LogInMethods{
@@ -23,5 +25,20 @@ export class LogInMethods{
         this.enterPassword(password);
         //Logger.subPaso('Click al botón "Iniciar Sesión"')
         this.clickOnButtonLogIn();
+    }
+    //Método Genérico para ingresar valores en los inputs del LogIn
+    static enterValuesInputs(selector, values){
+        LogInElements.selectorInputLogIn.inputsLogIn(selector)
+        .clear()
+        .type(values);
+    }
+
+    //Método para iniciar sesión
+    static logIns(user, password, selectorBtn){
+        this.enterValuesInputs(LogInData.selectorLogIn.inputname,user);
+        this.enterValuesInputs(LogInData.selectorLogIn.inputPassword,password);
+        ModuleUserMethods.clickOnButtonBySelector(selectorBtn);
+
+
     }
 }

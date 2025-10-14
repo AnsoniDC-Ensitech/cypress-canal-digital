@@ -51,4 +51,13 @@ export class MainPageData{
 
         }
     }
+
+    static get menuOptions(){
+        return {
+            administrationCollapse:'span[data-lang="Administración"]',
+            userMenu:'span[data-lang="Usuarios" ]',
+            rolesMenu:'span[data-lang="Roles" ]',
+            permissionMenu:'span[data-lang="Permisos" ]'
+        }
+    }
 }

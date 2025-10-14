@@ -220,16 +220,16 @@ export class ModuleUserMethods{
             ModuleUserElements.selectorInputs.selectorName(selector)
             .should('have.attr', 'type', 'password');
         }
-
+        
         //Método Genérico verificacion de composición de la contraseña
         static verifyPasswordComposition(selector, password,validationError){
-        ModuleUserElements.inputsScreenCreateUsers.inputPassword
+        ModuleUserElements.selectorInputs.selectorName(selector)
         .clear()
         .type(password)
         .invoke('val')
         .should('eq', password)
-         // Verifica que se muestre ningún mensaje de error
-         ModuleUserElements.messagesErrorPassword.mErrorPassword
+         // Verifica que se muestre mensaje de error
+         ModuleUserElements.passwordErrorMessages.inputErrorPassword(validationError)
          .should('exist')
     }
 
