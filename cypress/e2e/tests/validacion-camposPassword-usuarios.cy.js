@@ -10,11 +10,17 @@ const password = LogInData.validAcceses.password;
 const selLogIn = LogInData.selectorLogIn;
 const selBtn = LogInData.selectorBtnLogIn;
 const selectMenu = MainPageData.menuOptions;
-const button = ModuleUsersData.screenButtonsUsers;
-const selector = ModuleUsersData.selectorsName;
+const buttonAdd = ModuleUsersData.screenButtonsUsers.addButton;
+const buttonSave = ModuleUsersData.screenButtonsUsers.saveButton;
+const selecPassword = ModuleUsersData.selectorsName.inptPassword;
+const selecConfirmPassword = ModuleUsersData.selectorsName.inptConfirmdPassword;
 const inputError = ModuleUsersData.errorMessagesInputs;
-const errorMessagesPass = ModuleUsersData.messagesErrorPassword;
-const valuePassword = MainPageData.PasswordComposition;
+const errorPassword = ModuleUsersData.messagesErrorPassword.mErrorPassword;
+const errorConfirmPaswword = ModuleUsersData.messagesErrorPassword.mErrorPassword
+const withoutnumber = MainPageData.PasswordComposition.withoutnumber;
+const withoutletter  = MainPageData.PasswordComposition.withoutletter;
+const withoutSpecialCharacters = MainPageData.PasswordComposition.withoutSpecialCharacters;
+const valuePassword = MainPageData.PasswordComposition.correctValue;
 
 describe(MainPageData.testSuites.passwordValidation, () => {
 
@@ -23,9 +29,9 @@ describe(MainPageData.testSuites.passwordValidation, () => {
                 LogInMethods.logIns(selLogIn.inputname, user, selLogIn.inputPassword, password,selBtn.loginButton);
                 MainPageMethods.clickOnMenuOpstions(selectMenu.administrationCollapse);
                 MainPageMethods.clickOnMenuOpstions(selectMenu.userMenu);
-                ModuleUserMethods.clickOnButtonBySelector(button.addButton);
-                ModuleUserMethods.verifyTypePassword(selector.inptPassword);
-                ModuleUserMethods.verifyTypePassword(selector.inptConfirmdPassword);
+                ModuleUserMethods.clickOnButtonBySelector(buttonAdd);
+                ModuleUserMethods.verifyTypePassword(selecPassword);
+                ModuleUserMethods.verifyTypePassword(selecConfirmPassword);
                 cy.wait(3000)
         })
 
@@ -34,9 +40,18 @@ describe(MainPageData.testSuites.passwordValidation, () => {
                 LogInMethods.logIns(selLogIn.inputname, user, selLogIn.inputPassword, password,selBtn.loginButton);
                 MainPageMethods.clickOnMenuOpstions(selectMenu.administrationCollapse);
                 MainPageMethods.clickOnMenuOpstions(selectMenu.userMenu);
-                ModuleUserMethods.clickOnButtonBySelector(button.addButton);
-                ModuleUserMethods.verifyPasswordComposition(selector.inptPassword, valuePassword.withoutnumber,button.saveButton, errorMessagesPass.mErrorPassword);
-                ModuleUserMethods.verifyPasswordComposition(selector.inptConfirmdPassword, valuePassword.withoutnumber,button.saveButton, errorMessagesPass.mErrorConfirmdPassword);
+                ModuleUserMethods.clickOnButtonBySelector(buttonAdd);
+                ModuleUserMethods.verifyPasswordComposition(selecPassword, withoutnumber,buttonSave, errorPassword);
+                ModuleUserMethods.verifyPasswordComposition(selecConfirmPassword, withoutnumber,buttonSave, errorConfirmPaswword);
+                cy.wait(3000)
+                ModuleUserMethods.verifyPasswordComposition(selecPassword, withoutSpecialCharacters,buttonSave, errorPassword);
+                ModuleUserMethods.verifyPasswordComposition(selecConfirmPassword, withoutSpecialCharacters,buttonSave, errorConfirmPaswword);
+                cy.wait(3000)
+                ModuleUserMethods.verifyPasswordComposition(selecPassword, withoutletter,buttonSave, errorPassword);
+                ModuleUserMethods.verifyPasswordComposition(selecConfirmPassword, withoutletter,buttonSave, errorConfirmPaswword);
+                cy.wait(3000)
+                ModuleUserMethods.verifyPasswordCompositionCorrect(selecPassword, valuePassword,buttonSave, errorPassword);
+                ModuleUserMethods.verifyPasswordCompositionCorrect(selecConfirmPassword, valuePassword,buttonSave, errorConfirmPaswword);
                 cy.wait(3000)
         })
 

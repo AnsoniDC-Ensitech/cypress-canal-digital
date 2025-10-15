@@ -234,6 +234,19 @@ export class ModuleUserMethods{
          ModuleUserElements.passwordErrorMessages.inputErrorPassword(validationError)
          .should('exist')
     }
+    //Método Genérico verificacion de composición de la contraseña es correcta
+        static verifyPasswordCompositionCorrect(selector, password, btn, validationError){
+        ModuleUserElements.selectorInputs.selectorName(selector)
+        .clear()
+        .type(password)
+        .invoke('val')
+        .should('eq', password)
+        //click en el botón
+        this.clickOnButtonBySelector(btn)
+         // Verifica que se muestre mensaje de error
+         ModuleUserElements.passwordErrorMessages.inputErrorPassword(validationError)
+         .should('not.exist')
+    }
 
     //Método Genérico para verificar el tipo de campo constraseña
     static verifyTypePassword(selector){
