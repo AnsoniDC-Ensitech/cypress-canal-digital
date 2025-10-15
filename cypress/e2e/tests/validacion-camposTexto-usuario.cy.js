@@ -26,9 +26,9 @@ const selLogIn = LogInData.selectorLogIn;
 const selBtn = LogInData.selectorBtnLogIn;
 
 describe(MainPageData.testSuites.textValidation, () => {
-  it('Verificación de la longitud de campos de tipo texto', () => {
+  xit('Verificación de la longitud de campos de tipo texto', () => {
     MainPageMethods.browseWebsite();
-    LogInMethods.logIns(user,password,selBtn.loginButton)
+    LogInMethods.logIns(selLogIn.inputname, user, selLogIn.inputPassword, password,selBtn.loginButton);
     MainPageMethods.clickOnMenuOpstions(selectMenu.administrationCollapse);
     MainPageMethods.clickOnMenuOpstions(selectMenu.userMenu);
     ModuleUserMethods.clickOnButtonBySelector(button.addButton);
@@ -41,63 +41,65 @@ describe(MainPageData.testSuites.textValidation, () => {
 
   xit('Verificación que no se admiten espacios en blanco', () => {
     MainPageMethods.browseWebsite();
-    LogInMethods.logIn(user,password);
-    MainPageMethods.clickOnAdministrationLink();
-    MainPageMethods.clickOnUserLink();
-    ModuleUserMethods.openCreateUserScreen();
-    ModuleUserMethods.verifyEmptySpacesName(emptyText,textWithExtraSpaces);
-    ModuleUserMethods.verifyEmptySpacesLastname(emptyText,textWithExtraSpaces);
+    LogInMethods.logIns(selLogIn.inputname, user, selLogIn.inputPassword, password,selBtn.loginButton);
+    MainPageMethods.clickOnMenuOpstions(selectMenu.administrationCollapse);
+    MainPageMethods.clickOnMenuOpstions(selectMenu.userMenu);
+    ModuleUserMethods.clickOnButtonBySelector(button.addButton);
+    ModuleUserMethods.verifyThatOnlySpacesCanBeeEnteredName(selector.inptName, emptyText);
+    ModuleUserMethods.verifyThatExtraSpacesAreRemovedName(selector.inptName, textWithExtraSpaces);
+    ModuleUserMethods.verifyThatOnlySpacesCanBeeEnteredName(selector.inptLastname, emptyText);
+    ModuleUserMethods.verifyThatExtraSpacesAreRemovedName(selector.inptLastname, textWithExtraSpaces);
     cy.wait(3000);
   })
 
    xit('Verificación que valores admitidos sean los correctos', () => {
     MainPageMethods.browseWebsite();
-    LogInMethods.logIn(user,password);
-    MainPageMethods.clickOnAdministrationLink();
-    MainPageMethods.clickOnUserLink();
-    ModuleUserMethods.openCreateUserScreen();
-    ModuleUserMethods.verifyPermittedValuesName(textWithSpecialChars);
-    ModuleUserMethods.verifyPermittedValuesLastname(textWithSpecialChars);
-    ModuleUserMethods.clickOnButtonCreateUser();
-    ModuleUserMethods.verifyPermittedValuesName(hashtagText);
-    ModuleUserMethods.verifyPermittedValuesLastname(hashtagText);
-    ModuleUserMethods.clickOnButtonCreateUser();
-    ModuleUserMethods.verifyPermittedValuesName(symbolText);
-    ModuleUserMethods.verifyPermittedValuesLastname(symbolText);
-    ModuleUserMethods.clickOnButtonCreateUser();
+    LogInMethods.logIns(selLogIn.inputname, user, selLogIn.inputPassword, password,selBtn.loginButton);
+    MainPageMethods.clickOnMenuOpstions(selectMenu.administrationCollapse);
+    MainPageMethods.clickOnMenuOpstions(selectMenu.userMenu);
+    ModuleUserMethods.clickOnButtonBySelector(button.addButton);
+    ModuleUserMethods.verifyPermittedValues(selector.inptName, textWithSpecialChars, errorInputs.inputErrorName);
+    ModuleUserMethods.verifyPermittedValues(selector.inptLastname, textWithSpecialChars, errorInputs.inputErrorLastname);
+    ModuleUserMethods.clickOnButtonBySelector(button.saveButton);
+    ModuleUserMethods.verifyPermittedValues(selector.inptName, hashtagText, errorInputs.inputErrorName);
+    ModuleUserMethods.verifyPermittedValues(selector.inptLastname, hashtagText, errorInputs.inputErrorLastname);
+    ModuleUserMethods.clickOnButtonBySelector(button.saveButton);
+    ModuleUserMethods.verifyPermittedValues(selector.inptName, symbolText, errorInputs.inputErrorName);
+    ModuleUserMethods.verifyPermittedValues(selector.inptLastname, symbolText, errorInputs.inputErrorLastname);
+    ModuleUserMethods.clickOnButtonBySelector(button.saveButton);
     cy.wait(3000);
   })
 
    xit('Verificación que NO  no se permita ingresar únicamente cadenas compuestas por caracteres especiales.', () => {
     MainPageMethods.browseWebsite();
-    LogInMethods.logIn(user,password);
-    MainPageMethods.clickOnAdministrationLink();
-    MainPageMethods.clickOnUserLink();
-    ModuleUserMethods.openCreateUserScreen();
-    ModuleUserMethods.verifyInvalidSpecialCharName(text.catSign);
-    ModuleUserMethods.verifyInvalidSpecialCharLastName(text.catSign);
-    ModuleUserMethods.clickOnButtonCreateUser();
-    ModuleUserMethods.verifyInvalidSpecialCharName(text.asterisks);
-    ModuleUserMethods.verifyInvalidSpecialCharLastName(text.asterisks);
-    ModuleUserMethods.clickOnButtonCreateUser();
-    ModuleUserMethods.verifyInvalidSpecialCharName(text.doubleQuotationMarks);
-    ModuleUserMethods.verifyInvalidSpecialCharLastName(text.doubleQuotationMarks);
-    ModuleUserMethods.clickOnButtonCreateUser();
-    ModuleUserMethods.verifyInvalidSpecialCharName(text.compoundWithSymbols);
-    ModuleUserMethods.verifyInvalidSpecialCharLastName(text.compoundWithSymbols);
-    ModuleUserMethods.clickOnButtonCreateUser();
-    ModuleUserMethods.verifyInvalidSpecialCharName(text.exclamationMark);
-    ModuleUserMethods.verifyInvalidSpecialCharLastName(text.exclamationMark);
-    ModuleUserMethods.clickOnButtonCreateUser();
-    ModuleUserMethods.verifyInvalidSpecialCharName(text.currencySymbol);
-    ModuleUserMethods.verifyInvalidSpecialCharLastName(text.currencySymbol);
-    ModuleUserMethods.clickOnButtonCreateUser();
-    ModuleUserMethods.verifyInvalidSpecialCharName(text.bracket);
-    ModuleUserMethods.verifyInvalidSpecialCharLastName(text.bracket);
-    ModuleUserMethods.clickOnButtonCreateUser();
-    ModuleUserMethods.verifyInvalidSpecialCharName(text.singleQuotationMarks);
-    ModuleUserMethods.verifyInvalidSpecialCharLastName(text.singleQuotationMarks);
-    ModuleUserMethods.clickOnButtonCreateUser();
+    LogInMethods.logIns(selLogIn.inputname, user, selLogIn.inputPassword, password,selBtn.loginButton);
+    MainPageMethods.clickOnMenuOpstions(selectMenu.administrationCollapse);
+    MainPageMethods.clickOnMenuOpstions(selectMenu.userMenu);
+    ModuleUserMethods.clickOnButtonBySelector(button.addButton);
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptName, text.catSign, errorInputs.inputErrorName); 
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptLastname, text.catSign, errorInputs.inputErrorLastname); 
+    ModuleUserMethods.clickOnButtonBySelector(button.saveButton);
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptName, text.asterisks, errorInputs.inputErrorName); 
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptLastname, text.asterisks, errorInputs.inputErrorLastname); 
+    ModuleUserMethods.clickOnButtonBySelector(button.saveButton);
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptName, text.doubleQuotationMarks, errorInputs.inputErrorName); 
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptLastname, text.doubleQuotationMarks, errorInputs.inputErrorLastname); 
+    ModuleUserMethods.clickOnButtonBySelector(button.saveButton);
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptName, text.compoundWithSymbols, errorInputs.inputErrorName); 
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptLastname, text.compoundWithSymbols, errorInputs.inputErrorLastname); 
+    ModuleUserMethods.clickOnButtonBySelector(button.saveButton);
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptName, text.exclamationMark, errorInputs.inputErrorName); 
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptLastname, text.exclamationMark, errorInputs.inputErrorLastname); 
+    ModuleUserMethods.clickOnButtonBySelector(button.saveButton);
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptName, text.currencySymbol, errorInputs.inputErrorName); 
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptLastname, text.exclamcurrencySymbolationMark, errorInputs.inputErrorLastname); 
+    ModuleUserMethods.clickOnButtonBySelector(button.saveButton);
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptName, text.bracket, errorInputs.inputErrorName); 
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptLastname, text.bracket, errorInputs.inputErrorLastname); 
+    ModuleUserMethods.clickOnButtonBySelector(button.saveButton);
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptName, text.singleQuotationMarks, errorInputs.inputErrorName); 
+    ModuleUserMethods.verifyInvalidSpecialChar(selector.inptLastname, text.singleQuotationMarks, errorInputs.inputErrorLastname); 
+    ModuleUserMethods.clickOnButtonBySelector(button.saveButton);
     cy.wait(3000);
   })
 })

@@ -94,7 +94,7 @@ export class ModuleUserElements{
         static get inputsErrors(){
             return {
                 inputError(error){
-                    return cy.get(error);
+                    return cy.get(error,{ timeout: 3000 });
                 }
             }
         }
@@ -103,7 +103,7 @@ export class ModuleUserElements{
         static get passwordErrorMessages(){
             return {
                 inputErrorPassword(inptPassword){
-                    return cy.get(inptPassword);
+                    return cy.get(inptPassword, { timeout: 3000 });
                 }
             }
         }

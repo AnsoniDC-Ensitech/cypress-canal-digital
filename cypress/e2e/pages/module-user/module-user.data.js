@@ -4,7 +4,7 @@ export class ModuleUsersData{
             inptName: 'input[id="FirstName"]',
             inptLastname: 'input[id="LastName"]',
             inptEmail: 'input[id="Email"]',
-            inptPassword: 'input[id="password"]',
+            inptPassword: 'input[name="Password"]',
             inptConfirmdPassword: 'input[name="ConfirmPassword"]',
             inptRole: 'input[id="RoleId"]'
         };
