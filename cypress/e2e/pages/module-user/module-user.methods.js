@@ -192,24 +192,28 @@ export class ModuleUserMethods{
     }
 
     //Método Genérico para verificar los valores permitodos de tipo texto
-     static verifyPermittedValues(selector, values, messageError){
+     static verifyPermittedValues(selector, values, btn, messageError){
         ModuleUserElements.selectorInputs.selectorName(selector)
         .should('be.visible') 
         .clear()
         .type(values)
         .invoke('val')
         .should('eq', values)
+        //click en el botón
+        this.clickOnButtonBySelector(btn)
          // Verifica que NO se muestre ningún mensaje de error
          ModuleUserElements.inputsErrors.inputError(messageError)
         .should('not.exist') // no debe existir en el DOM
     }
-    //Método Genérico para verificar carcateres inválidos
-    static verifyInvalidSpecialChar(selector, values, messageError){
+    //Método Genérico para verificar caracateres inválidos
+    static verifyInvalidSpecialChar(selector, values, btn, messageError){
         ModuleUserElements.selectorInputs.selectorName(selector) 
         .clear()
         .type(values)
         .invoke('val')
         .should('eq', values)
+                //click en el botón
+        this.clickOnButtonBySelector(btn)
          // Verifica que se muestre ningún mensaje de error
          ModuleUserElements.inputsErrors.inputError(messageError)
         .should('exist') // Si debe existir en el DOM
