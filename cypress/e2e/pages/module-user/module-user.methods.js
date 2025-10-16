@@ -110,11 +110,4 @@ export class ModuleUserMethods{
          ModuleUserElements.passwordErrorMessages.inputErrorPassword(validationError)
          .should('not.exist')
     }
-    //Método genérico para verificar el atributo contraseña
-    static verifyMaxlengthAttributePassword(selector,length, number){
-        ModuleUserElements.selectorInputs.selectorName(selector)
-        .should('have.attr', length, number);
-    }
-
-
 }

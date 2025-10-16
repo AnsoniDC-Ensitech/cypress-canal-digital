@@ -80,8 +80,6 @@ describe(MainPageData.testSuites.passwordValidation, () => {
                 ModuleUserMethods.verifyPasswordComposition(selConfirmPassword, valsLength6, btnSave, errConfirmPasword);
                 ModuleUserMethods.verifyPasswordComposition(selPassword, valsLength7, btnSave, errPassword);
                 ModuleUserMethods.verifyPasswordComposition(selConfirmPassword, valsLength7, btnSave, errConfirmPasword);
-                
-
                 cy.wait(3000)
         })
         it ('Validación de longitud máxima de los campos de contrseña', ()=>{
@@ -96,7 +94,6 @@ describe(MainPageData.testSuites.passwordValidation, () => {
                 ModuleUserMethods.verifyPasswordCompositionCorrect(selPassword, valsLength21, btnSave, errPassword);
                 ModuleUserMethods.verifyPasswordCompositionCorrect(selPassword, valsLength25, btnSave, errPassword);
                 ModuleUserMethods.verifyMaximumLengthInput(selPassword, valsLength25, max);
-
                 cy.wait(3000)
         })
 
