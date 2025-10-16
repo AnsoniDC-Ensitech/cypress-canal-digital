@@ -26,8 +26,8 @@ const valsbracket = MainPageData.stringsComposedOfSpecialCharacters.bracket;
 const valsSingleQuotationMarks = MainPageData.stringsComposedOfSpecialCharacters.singleQuotationMarks;
 const selName = ModuleUsersData.selectorsName.inptName;
 const selLastname = ModuleUsersData.selectorsName.inptLastname;
-const btnSave = ModuleUsersData.screenButtonsUsers.addButton;
-const btnCreate = ModuleUsersData.screenButtonsUsers.saveButton;
+const btnSave = ModuleUsersData.screenButtonsUsers.saveButton;
+const btnCreate = ModuleUsersData.screenButtonsUsers.addButton;
 const msgErrName = ModuleUsersData.errorMessagesInputs.inputErrorName;
 const msgErrLastname = ModuleUsersData.errorMessagesInputs.inputErrorLastname;
 const selLinkAdmin = MainPageData.menuOptions.administrationCollapse;
@@ -35,24 +35,26 @@ const selLinkUser = MainPageData.menuOptions.userMenu;
 const inpName = LogInData.selectorLogIn.inputname;
 const inpPassword = LogInData.selectorLogIn.inputPassword;
 const btnLogin = LogInData.selectorBtnLogIn.loginButton;
+const maxlength = 'maxlength';
+const nmax = '100';
 
 describe(MainPageData.testSuites.textValidation, () => {
-  xit('Verificación de la longitud de campos de tipo texto', () => {
+  it('Verificación de la longitud de campos de tipo texto', () => {
     MainPageMethods.browseWebsite();
-    LogInMethods.logIns(inpName, user, inpPassword, password,btnLogin);
+    LogInMethods.logIn(inpName, user, inpPassword, password,btnLogin);
     MainPageMethods.clickOnMenuOpstions(selLinkAdmin);
     MainPageMethods.clickOnMenuOpstions(selLinkUser);
     ModuleUserMethods.clickOnButtonBySelector(btnCreate);
-    ModuleUserMethods.verifyMaxlengthAttributeInputs(selName);
-    ModuleUserMethods.verifyMaxlengthAttributeInputs(selLastname);
-    ModuleUserMethods.verifyMaximumLengthInput(selName,longText1);
-    ModuleUserMethods.verifyMaximumLengthInput(selLastname,longText2);
+    ModuleUserMethods.verifyLengthAttributeInputs(selName, maxlength, nmax);
+    ModuleUserMethods.verifyLengthAttributeInputs(selLastname,maxlength, nmax);
+    ModuleUserMethods.verifyMaximumLengthInput(selName,longText1, nmax);
+    ModuleUserMethods.verifyMaximumLengthInput(selLastname,longText2, nmax);
     cy.wait(3000);
   })
 
   xit('Verificación que no se admiten espacios en blanco', () => {
     MainPageMethods.browseWebsite();
-    LogInMethods.logIns(inpName, user, inpPassword, password,btnLogin);
+    LogInMethods.logIn(inpName, user, inpPassword, password,btnLogin);
     MainPageMethods.clickOnMenuOpstions(selLinkAdmin);
     MainPageMethods.clickOnMenuOpstions(selLinkUser);
     ModuleUserMethods.clickOnButtonBySelector(btnCreate);
@@ -65,7 +67,7 @@ describe(MainPageData.testSuites.textValidation, () => {
 
    xit('Verificación que valores admitidos sean los correctos', () => {
     MainPageMethods.browseWebsite();
-    LogInMethods.logIns(inpName, user, inpPassword, password,btnLogin);
+    LogInMethods.logIn(inpName, user, inpPassword, password,btnLogin);
     MainPageMethods.clickOnMenuOpstions(selLinkAdmin);
     MainPageMethods.clickOnMenuOpstions(selLinkUser);
     ModuleUserMethods.clickOnButtonBySelector(btnCreate);
@@ -80,7 +82,7 @@ describe(MainPageData.testSuites.textValidation, () => {
 
    xit('Verificación que NO  no se permita ingresar únicamente cadenas compuestas por caracteres especiales.', () => {
     MainPageMethods.browseWebsite();
-    LogInMethods.logIns(inpName, user, inpPassword, password,btnLogin);
+    LogInMethods.logIn(inpName, user, inpPassword, password,btnLogin);
     MainPageMethods.clickOnMenuOpstions(selLinkAdmin);
     MainPageMethods.clickOnMenuOpstions(selLinkUser);
     ModuleUserMethods.clickOnButtonBySelector(btnCreate);

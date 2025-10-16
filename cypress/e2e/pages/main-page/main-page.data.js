@@ -60,4 +60,15 @@ export class MainPageData{
             permissionMenu:'span[data-lang="Permisos" ]'
         }
     }
+
+    static get valuesPassword(){
+        return{
+            vals4: 'E@s1',
+            vals6: 'enS1@S',
+            vals7:'Ensite@',
+            vals20: 'Ensitech2025@$3sdsg1',
+            vals21: 'Ensitech2025@$3sdsgt1',
+            vals25: 'Ensitech2025@$3sdsgt1423423423'
+        }
+    }
 }
