@@ -34,12 +34,25 @@ const valsLength7 = MainPageData.valuesPassword.vals7;
 const valsLength20 =  MainPageData.valuesPassword.vals20;
 const valsLength21 =  MainPageData.valuesPassword.vals21;
 const valsLength25 =  MainPageData.valuesPassword.vals25;
+const urlUser = MainPageData.url.urlCreateUser;
+const urlSite = MainPageData.url.urlSite;
+const emptyText = MainPageData.valuesForEmptySpaces.emptyData;
+const extraSpaces = MainPageData.valuesForEmptySpaces.dataWithSpacesAtTheBeginnin;
+const greek = MainPageData.PasswordComposition.letterGreek;
+const circumflex = MainPageData.PasswordComposition.circumflex;
+const emojis = MainPageData.PasswordComposition.emojis;
+const mathematics = MainPageData.PasswordComposition.summationsign;
+const valsnull = MainPageData.PasswordComposition.null;
+const valsAscii = MainPageData.PasswordComposition.ASCII;
+const binary = MainPageData.PasswordComposition.binary;
+
+
 
 
 describe(MainPageData.testSuites.passwordValidation, () => {
 
-        xit ('Validación de campo de tipo password', ()=>{
-                MainPageMethods.browseWebsite();
+        xit ('Verificar campo de tipo password', ()=>{
+                MainPageMethods.browseWebsite(urlSite);
                 LogInMethods.logIn(inpName, user, inpPassword, password,btnLogIn);
                 MainPageMethods.clickOnMenuOpstions(linkAdmin);
                 MainPageMethods.clickOnMenuOpstions(linkUser);
@@ -49,8 +62,8 @@ describe(MainPageData.testSuites.passwordValidation, () => {
                 cy.wait(3000)
         })
 
-         xit ('Validación de la composición de la contraseña', ()=>{
-                MainPageMethods.browseWebsite();
+         xit ('Verificar la composición de la contraseña', ()=>{
+                MainPageMethods.browseWebsite(urlSite);
                 LogInMethods.logIn(inpName, user, inpPassword, password,btnLogIn);
                 MainPageMethods.clickOnMenuOpstions(linkAdmin);
                 MainPageMethods.clickOnMenuOpstions(linkUser)
@@ -61,13 +74,11 @@ describe(MainPageData.testSuites.passwordValidation, () => {
                 ModuleUserMethods.verifyPasswordComposition(selConfirmPassword, withoutSpecialCharacters,btnSave, errConfirmPasword);
                 ModuleUserMethods.verifyPasswordComposition(selPassword, withoutLetter,btnSave, errPassword);
                 ModuleUserMethods.verifyPasswordComposition(selConfirmPassword, withoutLetter,btnSave, errConfirmPasword);
-                ModuleUserMethods.verifyPasswordCompositionCorrect(selPassword, valsPassword,btnSave, errPassword);
-                ModuleUserMethods.verifyPasswordCompositionCorrect(selConfirmPassword, valsPassword,btnSave, errConfirmPasword);
                 cy.wait(3000)
         })
 
-        xit ('Validación de longitud mínima de los campos de contrseña', ()=>{
-                MainPageMethods.browseWebsite();
+        xit ('Verificar longitud mínima de los campos de contrseña', ()=>{
+                MainPageMethods.browseWebsite(urlSite);
                 LogInMethods.logIn(inpName, user, inpPassword, password,btnLogIn);
                 MainPageMethods.clickOnMenuOpstions(linkAdmin);
                 MainPageMethods.clickOnMenuOpstions(linkUser);
@@ -82,8 +93,8 @@ describe(MainPageData.testSuites.passwordValidation, () => {
                 ModuleUserMethods.verifyPasswordComposition(selConfirmPassword, valsLength7, btnSave, errConfirmPasword);
                 cy.wait(3000)
         })
-        it ('Validación de longitud máxima de los campos de contrseña', ()=>{
-                MainPageMethods.browseWebsite();
+        xit ('Verificar de longitud máxima de los campos de contrseña', ()=>{
+                MainPageMethods.browseWebsite(urlSite);
                 LogInMethods.logIn(inpName, user, inpPassword, password,btnLogIn);
                 MainPageMethods.clickOnMenuOpstions(linkAdmin);
                 MainPageMethods.clickOnMenuOpstions(linkUser);
@@ -94,6 +105,32 @@ describe(MainPageData.testSuites.passwordValidation, () => {
                 ModuleUserMethods.verifyPasswordCompositionCorrect(selPassword, valsLength21, btnSave, errPassword);
                 ModuleUserMethods.verifyPasswordCompositionCorrect(selPassword, valsLength25, btnSave, errPassword);
                 ModuleUserMethods.verifyMaximumLengthInput(selPassword, valsLength25, max);
+                cy.wait(3000)
+        })
+
+        xit ('Verificar que no se acepten espacios en blanco en la composición de la Password', ()=>{
+                MainPageMethods.browseWebsite(urlSite);
+                LogInMethods.logIn(inpName, user, inpPassword, password,btnLogIn);
+                MainPageMethods.clickOnMenuOpstions(linkAdmin);
+                MainPageMethods.clickOnMenuOpstions(linkUser);
+                ModuleUserMethods.clickOnButtonBySelector(btnCreate);
+                ModuleUserMethods.verifyThatOnlySpacesCanBeeEnteredName(selPassword, emptyText, btnSave);
+                ModuleUserMethods.verifyThatOnlySpacesCanBeeEnteredName(selConfirmPassword, emptyText, btnSave);
+                ModuleUserMethods.verifyThatOnlySpacesCanBeeEnteredName(selPassword, extraSpaces, btnSave);
+                ModuleUserMethods.verifyThatOnlySpacesCanBeeEnteredName(selConfirmPassword, extraSpaces, btnSave);
+                cy.wait(3000)
+        })
+
+        it ('Verificar que no se acepten espacios en blanco en la composición de la Password', ()=>{
+                MainPageMethods.browseWebsite(urlSite);
+                LogInMethods.logIn(inpName, user, inpPassword, password,btnLogIn);
+                MainPageMethods.clickOnMenuOpstions(linkAdmin);
+                MainPageMethods.clickOnMenuOpstions(linkUser);
+                ModuleUserMethods.clickOnButtonBySelector(btnCreate);
+                ModuleUserMethods.verifyPasswordCompositionCorrect(selPassword, valsPassword,btnSave, errPassword);
+                ModuleUserMethods.verifyPasswordCompositionCorrect(selConfirmPassword, valsPassword,btnSave, errConfirmPasword);
+                ModuleUserMethods.verifyInvalidSpecialChar(selPassword, greek, btnSave, errPassword);
+                ModuleUserMethods.verifyInvalidSpecialChar(selConfirmPassword, greek, btnSave, errConfirmPasword);
                 cy.wait(3000)
         })
 

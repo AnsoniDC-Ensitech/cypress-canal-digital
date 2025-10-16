@@ -1,6 +1,9 @@
 export class MainPageData{
     static get url(){
-        return "https://appweb-plantillanet9-cgb8cnhydgd3d7c8.southcentralus-01.azurewebsites.net/Authentication/SignIn";
+        return {
+            urlSite: "https://appweb-plantillanet9-cgb8cnhydgd3d7c8.southcentralus-01.azurewebsites.net/Authentication/SignIn",
+            urlCreateUser: "https://appweb-plantillanet9-cgb8cnhydgd3d7c8.southcentralus-01.azurewebsites.net/User/Create"
+        }
     };
     static get testSuites(){
         return{
@@ -17,7 +20,7 @@ export class MainPageData{
 
     static get valuesForEmptySpaces(){
         return{
-            emptyData: '    ',
+            emptyData: '         ',
             dataWithSpacesAtTheBeginnin: '   usuario   '
         }
     }
@@ -47,8 +50,14 @@ export class MainPageData{
             withoutletter:'1234567898',
             withoutnumber:'ASDEDSWS',
             withoutSpecialCharacters:'Ensitech2020',
-            correctValue:'Ensitech2025$'
-
+            correctValue:'Ensitech2025$',
+            letterGreek: 'αβγ∪∫∮ΘδΔΞξΡΠπι',
+            emojis:'😊As9@🔥🚀😂😘9🤦‍♂️🤦‍♀️🙌',
+            circumflex: '◌A@2◌́◌̂◌̂9◌̈◌̄äâ',
+            summationsign:'⅙⅗9∀∑s3A√∓∜∦∵∺∷',
+            ASCII: '░▒▓¢9A*ÿª',
+            null: '',
+            binary: '000001101010*sA'
         }
     }
 

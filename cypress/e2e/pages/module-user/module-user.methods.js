@@ -34,20 +34,22 @@ export class ModuleUserMethods{
     }
 
     //Método Genérico para verificar que no acepta espacios en blanco
-    static verifyThatOnlySpacesCanBeeEnteredName(selector, emptyText){
+    static verifyThatOnlySpacesCanBeeEnteredName(selector, emptyText, btn){
         ModuleUserElements.selectorInputs.selectorName(selector)
         .type(emptyText)        // intenta ingresar solo espacios
         .invoke('val')
         .should('eq', '')    // debe quedarse vacío
+        this.clickOnButtonBySelector(btn)
     }
 
     //Método Genérico para verificar que no contenga espacios al inicio y final
-    static verifyThatExtraSpacesAreRemovedName(selector, emptyText){
+    static verifyThatExtraSpacesAreRemovedName(selector, emptyText, btn){
         ModuleUserElements.selectorInputs.selectorName(selector)
         .clear()
         .type(emptyText)
         .invoke('val')
         .should('eq', emptyText.trim())  // espacios al inicio/final eliminados
+        this.clickOnButtonBySelector(btn)
     }
 
     //Método Genérico para verificar los valores permitodos de tipo texto

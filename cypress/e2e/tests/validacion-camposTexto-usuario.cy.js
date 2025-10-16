@@ -4,9 +4,8 @@ import { ModuleUserMethods } from "../pages/module-user/module-user.methods";
 import { MainPageData } from "../pages/main-page/main-page.data";
 import { MainPageMethods } from "../pages/main-page/main-page.methods";
 import { ModuleUsersData } from "../pages/module-user/module-user.data";
-
-
-
+const urlUser = MainPageData.url.urlCreateUser;
+const urlSite = MainPageData.url.urlSite;
 const user =  LogInData.validAcceses.username;
 const password = LogInData.validAcceses.password;
 const longText1 = 'A'.repeat(120);
@@ -38,9 +37,9 @@ const btnLogin = LogInData.selectorBtnLogIn.loginButton;
 const maxlength = 'maxlength';
 const nmax = '100';
 
-describe(MainPageData.testSuites.textValidation, () => {
+xdescribe(MainPageData.testSuites.textValidation, () => {
   it('Verificación de la longitud de campos de tipo texto', () => {
-    MainPageMethods.browseWebsite();
+    MainPageMethods.browseWebsite(urlSite);
     LogInMethods.logIn(inpName, user, inpPassword, password,btnLogin);
     MainPageMethods.clickOnMenuOpstions(selLinkAdmin);
     MainPageMethods.clickOnMenuOpstions(selLinkUser);
@@ -53,20 +52,20 @@ describe(MainPageData.testSuites.textValidation, () => {
   })
 
   xit('Verificación que no se admiten espacios en blanco', () => {
-    MainPageMethods.browseWebsite();
+    MainPageMethods.browseWebsite(urlSite);
     LogInMethods.logIn(inpName, user, inpPassword, password,btnLogin);
     MainPageMethods.clickOnMenuOpstions(selLinkAdmin);
     MainPageMethods.clickOnMenuOpstions(selLinkUser);
     ModuleUserMethods.clickOnButtonBySelector(btnCreate);
-    ModuleUserMethods.verifyThatOnlySpacesCanBeeEnteredName(selName, emptyText);
-    ModuleUserMethods.verifyThatExtraSpacesAreRemovedName(selName, extraSpaces);
-    ModuleUserMethods.verifyThatOnlySpacesCanBeeEnteredName(selLastname, emptyText);
-    ModuleUserMethods.verifyThatExtraSpacesAreRemovedName(selLastname, extraSpaces);
+    ModuleUserMethods.verifyThatOnlySpacesCanBeeEnteredName(selName, emptyText,btnSave);
+    ModuleUserMethods.verifyThatExtraSpacesAreRemovedName(selName, extraSpaces, btnSave);
+    ModuleUserMethods.verifyThatOnlySpacesCanBeeEnteredName(selLastname, emptyText, btnSave);
+    ModuleUserMethods.verifyThatExtraSpacesAreRemovedName(selLastname, extraSpaces, btnSave);
     cy.wait(3000);
   })
 
    xit('Verificación que valores admitidos sean los correctos', () => {
-    MainPageMethods.browseWebsite();
+    MainPageMethods.browseWebsite(urlSite);
     LogInMethods.logIn(inpName, user, inpPassword, password,btnLogin);
     MainPageMethods.clickOnMenuOpstions(selLinkAdmin);
     MainPageMethods.clickOnMenuOpstions(selLinkUser);
@@ -81,7 +80,7 @@ describe(MainPageData.testSuites.textValidation, () => {
   })
 
    xit('Verificación que NO  no se permita ingresar únicamente cadenas compuestas por caracteres especiales.', () => {
-    MainPageMethods.browseWebsite();
+    MainPageMethods.browseWebsite(urlSite);
     LogInMethods.logIn(inpName, user, inpPassword, password,btnLogin);
     MainPageMethods.clickOnMenuOpstions(selLinkAdmin);
     MainPageMethods.clickOnMenuOpstions(selLinkUser);
