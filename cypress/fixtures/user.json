@@ -1,0 +1,19 @@
+{
+"validAcceses":{
+            "username": "ansoni@ensitech.com",
+            "password": "Ensitech2025$"
+    }, 
+    "stringsComposedOfSpecialCharacters" :{
+        "catSign":"#################",
+        "doubleQuotationMarks": "\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"",
+        "compoundWithSymbols":"\"\"\"\"####$$%%%%%",
+        "currencySymbol":"#$#$#$#$#$#$#$#$#$",
+        "exclamationMark": "!!!////%%%^^",
+        "asterisks":"**************",
+        "bracket":"]]]]]]]]]]]]]",
+        "singleQuotationMarks":"¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
+
+        
+        
+    }
+  }

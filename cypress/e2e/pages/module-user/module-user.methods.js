@@ -112,4 +112,26 @@ export class ModuleUserMethods{
          ModuleUserElements.passwordErrorMessages.inputErrorPassword(validationError)
          .should('not.exist')
     }
+
+    //Método generico para verificar el campo requerido
+        static verifyRequiredFields(selector, btn, validationError){
+            ModuleUserElements.selectorInputs.selectorName(selector)
+            this.clickOnButtonBySelector(btn)
+            ModuleUserElements.passwordErrorMessages.inputErrorPassword(validationError)
+            .should('exist')
+        }
+
+    //Verificación de contraseñas no coincididas
+        static verifyPasswordMatches(selector, values,selector2, values2, btn, error, text){
+            ModuleUserElements.selectorInputs.selectorName(selector)
+            .clear()
+            .type(values)
+            ModuleUserElements.selectorInputs.selectorName(selector2)
+            .clear()
+            .type(values2)
+            this.clickOnButtonBySelector(btn)
+            ModuleUserElements.inputsErrors.inputError(error)
+            .should('be.visible')
+            .and('contain.text', text)
+        }
 }
