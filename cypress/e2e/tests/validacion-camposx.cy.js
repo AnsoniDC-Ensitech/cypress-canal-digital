@@ -8,7 +8,6 @@ const urlCreate = MainPageData.url.urlCreateUser;
 const inpUser = LogInData.selectorLogIn.inputname;
 const inpPassword = LogInData.selectorLogIn.inputPassword;
 const btnLogIn = LogInData.selectorBtnLogIn.loginButton;
-const user = 
 
 describe ('test navegacion', ()=>{
     let users;
